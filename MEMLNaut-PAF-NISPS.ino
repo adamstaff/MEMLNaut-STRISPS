@@ -164,9 +164,8 @@ void setup() {
 
   std::shared_ptr<MessageView> helpView = std::make_shared<MessageView>("Help");
   helpView->post("PAF synth NISPS");
-  helpView->post("TA: Down: Forget replay memory");
-  helpView->post("MA: Up: Randomise ");
-  helpView->post("MA: Down: Jolt");
+  helpView->post("TA: Down: Clear replay memory");
+  helpView->post("MA: Up: Randomise / Down: Jolt ");
   helpView->post("MB: Up: Positive reward");
   helpView->post("MB: Down: Negative reward");
   helpView->post("X: Learning rate");
