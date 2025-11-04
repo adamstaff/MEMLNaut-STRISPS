@@ -26,7 +26,7 @@ public:
     static constexpr size_t kN_Params = NPARAMS;
     static constexpr size_t nFREQs = 17;
     static constexpr float frequencies[nFREQs] = {100, 200, 400,800, 400, 800, 100,1600,100,400,100,50,1600,200,100,800,400};
-    
+    static constexpr size_t nVoiceSpaces=5;
 
     using VoiceSpaceFn = std::function<void(const std::array<float, NPARAMS>&)>;
     struct VoiceSpace {
@@ -34,9 +34,23 @@ public:
         VoiceSpaceFn mappingFunction = nullptr;
     };
 
-    std::array<VoiceSpace, 5> voiceSpaces;
+    std::array<VoiceSpace, nVoiceSpaces> voiceSpaces;
     
     VoiceSpaceFn currentVoiceSpace;
+
+    std::array<String, nVoiceSpaces> getVoiceSpaceNames() {
+        std::array<String, nVoiceSpaces> names;
+        for(size_t i=0; i < voiceSpaces.size(); i++) {
+            names[i] = voiceSpaces[i].name;
+        }
+        return names;
+    }
+
+    void setVoiceSpace(size_t i) {
+        if (i < voiceSpaces.size()) {
+            currentVoiceSpace = voiceSpaces[i];
+        }
+    }
 
     PAFSynthAudioApp() : AudioAppBase<NPARAMS>() {
 #if 1
@@ -490,6 +504,8 @@ public:
     }
 
     queue_t qMIDINoteOn, qMIDINoteOff;
+
+    
 
 protected:
 
