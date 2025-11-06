@@ -8,15 +8,20 @@
     p1Gain=0.f; \
     p2Gain=0.f; \
     p3Gain=0.f; \
-    \
-    paf0_cf = (params[0]  * 2.0f); \
-    paf0_bw = 10.f + (params[0] * 500.f); \
+    float p1 = params[0] + params[7] +  params[8];\
+    p1 = ((sinf(p1 * TWOPI)) + 1.f) * 0.5f;\
+    float p2 = params[9] + params[10] +  params[11];\
+    p2 = ((sinf(p2 * TWOPI)) + 1.f) * 0.5f;\
+    float p3 = params[12] + params[13] +  params[14] + params[15];\
+    p3 = ((sinf(p3 * TWOPI)) + 1.f) * 0.5f;\
+    paf0_cf = (p1  * 2.0f); \
+    paf0_bw = 10.f + (p2 * 700.f); \
     \
     paf0_vib = 0.f; \
     \
     paf0_vfr = 0.f; \
     \
-    paf0_shift =  -20.f + (params[0] * 40.f); \
+    paf0_shift =  -20.f + (p3 * 40.f); \
     \
     dl1mix = 0.f; \
     \
