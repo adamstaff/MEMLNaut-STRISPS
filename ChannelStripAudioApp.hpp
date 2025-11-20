@@ -427,7 +427,7 @@ class ChannelStripAudioApp : public AudioAppBase<NPARAMS>
 {
 public:
     static constexpr size_t kN_Params = NPARAMS;
-    static constexpr size_t nVoiceSpaces=4;
+    static constexpr size_t nVoiceSpaces=5;
 
 
     std::array<VoiceSpace<NPARAMS>, nVoiceSpaces> voiceSpaces;
@@ -452,7 +452,7 @@ public:
         auto voiceSpaceBasic = [this](const std::array<float, NPARAMS>& params) {
             VOICE_SPACE_CHSTRIP_BASIC_BODY
         };
-        auto voiceSpaceFemaleVox = [this](const std::array<float, NPARAMS>& params) {
+        auto voiceSpaceSSL4K = [this](const std::array<float, NPARAMS>& params) {
             VOICE_SPACE_CHSTRIP_SSL4KGIST_BODY
         };
         auto voiceSpaceMaleVox = [this](const std::array<float, NPARAMS>& params) {
@@ -461,12 +461,15 @@ public:
         auto voiceSpaceFemaleVox = [this](const std::array<float, NPARAMS>& params) {
             VOICE_SPACE_CHSTRIP_FEMALE_VOX_BODY
         };
-
+        auto voiceSpaceSSL9K = [this](const std::array<float, NPARAMS>& params) {
+            VOICE_SPACE_CHSTRIP_SSL9KINDA_BODY
+        };
 
         voiceSpaces[0] = {"WannabeNeve66", voiceSpaceBasic};
-        voiceSpaces[1] = {"SSL 4K G-ist", voiceSpaceBasic};
-        voiceSpaces[2] = {"MaleVox", voiceSpaceBasic};
-        voiceSpaces[3] = {"FemaleVox", voiceSpaceBasic};
+        voiceSpaces[1] = {"SSL 4K G-ist", voiceSpaceSSL4K};
+        voiceSpaces[3] = {"MaleVox", voiceSpaceMaleVox};
+        voiceSpaces[4] = {"FemaleVox", voiceSpaceFemaleVox};
+        voiceSpaces[2] = {"SSL 9K-inda", voiceSpaceSSL9K};
 
         currentVoiceSpace = voiceSpaces[0].mappingFunction;   
 
