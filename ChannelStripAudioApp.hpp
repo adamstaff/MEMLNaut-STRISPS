@@ -449,8 +449,8 @@ public:
     }
 
     ChannelStripAudioApp() : AudioAppBase<NPARAMS>() {
-        auto voiceSpaceBasic = [this](const std::array<float, NPARAMS>& params) {
-            VOICE_SPACE_CHSTRIP_BASIC_BODY
+        auto voiceSpaceNeve66 = [this](const std::array<float, NPARAMS>& params) {
+            VOICE_SPACE_CHSTRIP_NEVE66_BODY
         };
         auto voiceSpaceSSL4K = [this](const std::array<float, NPARAMS>& params) {
             VOICE_SPACE_CHSTRIP_SSL4KGIST_BODY
@@ -465,11 +465,12 @@ public:
             VOICE_SPACE_CHSTRIP_SSL9KINDA_BODY
         };
 
-        voiceSpaces[0] = {"WannabeNeve66", voiceSpaceBasic};
+        voiceSpaces[0] = {"WannabeNeve66", voiceSpaceNeve66};
         voiceSpaces[1] = {"SSL 4K G-ist", voiceSpaceSSL4K};
+        voiceSpaces[2] = {"SSL 9K-inda", voiceSpaceSSL9K};
         voiceSpaces[3] = {"MaleVox", voiceSpaceMaleVox};
         voiceSpaces[4] = {"FemaleVox", voiceSpaceFemaleVox};
-        voiceSpaces[2] = {"SSL 9K-inda", voiceSpaceSSL9K};
+
 
         currentVoiceSpace = voiceSpaces[0].mappingFunction;   
 
