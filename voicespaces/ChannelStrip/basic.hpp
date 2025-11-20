@@ -1,7 +1,7 @@
 #ifndef __VOICE_SPACE_CHSTRIP_BASIC_HPP__
 #define __VOICE_SPACE_CHSTRIP_BASIC_HPP__
 
-#define VOICE_SPACE_CHSTRIP_NEVE_BODY \
+#define VOICE_SPACE_CHSTRIP_NEVE66_BODY \
     preGain=0.5f + (params[0] * 4.f); \
     \
     inLowPassCutoff = 2000.f + (params[7] * params[7] * 18000.f); \
